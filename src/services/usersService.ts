@@ -5,14 +5,28 @@ const users: User[] = [
   { id: 2, name: 'Hanako', email: 'hanako@example.com', age: 25 },
 ];
 
+/**
+ * ユーザー一覧を取得する
+ * @returns ユーザー一覧
+ */
 export const getAllUsers = async (): Promise<User[]> => {
   return users;
 };
 
+/**
+ * ユーザーを取得する
+ * @param id ユーザーID
+ * @returns ユーザー
+ */
 export const getUserById = async (id: number): Promise<User | null> => {
   return users.find((user) => user.id === id) ?? null;
 };
 
+/**
+ * ユーザーを作成する
+ * @param input ユーザー情報
+ * @returns ユーザー
+ */
 export const createUser = async (input: CreateUserInput): Promise<User> => {
   const existingUser = users.find((user) => user.email === input.email);
 
@@ -31,6 +45,12 @@ export const createUser = async (input: CreateUserInput): Promise<User> => {
   return newUser;
 };
 
+/**
+ * ユーザーを更新する
+ * @param id ユーザーID
+ * @param input ユーザー情報
+ * @returns ユーザー
+ */
 export const updateUser = async (
   id: number,
   input: UpdateUserInput,
@@ -55,6 +75,11 @@ export const updateUser = async (
   return targetUser;
 };
 
+/**
+ * ユーザーを削除する
+ * @param id ユーザーID
+ * @returns ユーザー
+ */
 export const deleteUser = async (id: number): Promise<User | null> => {
   const index = users.findIndex((user) => user.id === id);
 
