@@ -1,6 +1,9 @@
 import express, { Request, Response, NextFunction } from "express";
+
 import usersRouter from "./routes/users";
 import productsRouter from "./routes/product";
+import paymentsRouter from "./routes/payments";
+
 const app = express();
 
 app.use(express.json());
@@ -10,6 +13,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
+app.use("/payments", paymentsRouter);
 
 app.use(
   (err: unknown, req: Request, res: Response, next: NextFunction): void => {
